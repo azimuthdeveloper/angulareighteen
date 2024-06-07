@@ -1,1 +1,9 @@
-<p>login-simulator works!</p>
+<div style="text-align: center; display: flex; flex-direction: column; gap: 5px; margin: 5px">
+  <i>Login Simulator</i>
+  <p>
+    Currently logged in: {{loggedInUser()}}
+  </p>
+  <button (click)="login(LoginType.AdminUser)" >Login as admin</button>
+  <button (click)="login(LoginType.NormalUser)">Login as normal user</button>
+  <button (click)="logout()">Logout</button>
+</div>
