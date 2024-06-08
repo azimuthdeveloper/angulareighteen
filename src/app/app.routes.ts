@@ -1,4 +1,4 @@
-import {Router, Routes} from '@angular/router';
+import {RedirectCommand, Router, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {AdminComponent} from "./home/admin/admin.component";
 import {inject} from "@angular/core";
@@ -17,13 +17,15 @@ export const routes: Routes = [
     canActivate: [() => {
       const router = inject(Router);
       const auth = inject(AuthenticationService);
-      if (auth.userLogin$.value == LoginType.AdminUser){
+
+      if (auth.userLogin$.value == LoginType.AdminUser) {
         return true;
       }
-      else{
-        router.navigate(['/unauthorized']);
-        return false;
-      }
+      return new RedirectCommand(router.parseUrl('/unauthorized'), {
+        state: {
+          loginDuringAuth: auth.userLogin$.value
+        }
+      })
     }],
   },
   {
