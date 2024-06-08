@@ -2,10 +2,6 @@
 
 @let authStatus = this.loginDuringAuth() ?? 'Not logged in';
 
-@if (this.loginDuringAuth() == undefined){
-  The router thinks you're not logged in.
-} @else {
-  Thee router thinks you're logged in as {{LoginType[this.loginDuringAuth()!]}}
-}
-<br>
+The router thinks you're logged in as {{authStatus}}
+
 <button (click)="goBack()">Go back</button>

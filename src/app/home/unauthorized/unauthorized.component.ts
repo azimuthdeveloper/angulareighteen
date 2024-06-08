@@ -23,6 +23,10 @@ export class UnauthorizedComponent {
   }
   goBack(){
     this._location.back();
+    this.loginType;
+    for (let okay of this.loginType){
+
+    }
   }
 
   protected readonly LoginType = LoginType;
